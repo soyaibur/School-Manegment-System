@@ -52,7 +52,7 @@ if (!isset($_SESSION['user_login'])) {
   </div>
 </nav>
  
- <div class="container-fluid">
+ <div class="container-fluid" style="min-height:70vh;">
    <div class="row">
      <div class="col-md-3">
         <div class="list-group">
@@ -64,7 +64,22 @@ if (!isset($_SESSION['user_login'])) {
       </div>
      <div class="col-md-9">
        
-       
+              <?php
+                  if (isset($_GET['page'])) {
+                    $page_link=$_GET['page'].'.php';
+                  } else{
+                    $page_link = "dashboard.php";
+                  }
+
+                
+                
+
+                if (file_exists($page_link)) {
+                  require_once $page_link;
+                } else{
+                  echo "File Not Found";
+                }
+              ?>
 
      </div>
    </div>
