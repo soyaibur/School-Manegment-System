@@ -8,6 +8,7 @@
 <!--heading and breadcom-->
 
 <?php
+
 if (isset($_POST['add-student'])) {
     $name = $_POST['name'];
     $roll = $_POST['roll'];
@@ -19,6 +20,24 @@ if (isset($_POST['add-student'])) {
     $nameMake=$name.$roll.'.'.$extention;
     $photo = $nameMake;
 
+
+
+    
+    //Data inserting
+    $query = "INSERT INTO student_info(name, roll, city, pcontact, class ,photo) VALUES ('$name','$roll','$city','$pcontact','$class','$photo');";
+   
+    $inserting = mysqli_query($link,$query);
+
+    if ($inserting) {
+
+       $filedes = 'student-images/'.$photo;
+        move_uploaded_file($_FILES['photo']['tmp_name'],$filedes);
+        $success = "Data insert success!";
+
+    } else{
+        $error = "Data insert Worng!";
+    }
+
     
 
     
@@ -26,6 +45,11 @@ if (isset($_POST['add-student'])) {
     
 }
 ?>
+
+<div class="row">
+<?php if (isset($success)) {echo '<p class="alert alert-success col-md-6">'. $success .'</p>';} ?>
+<?php if (isset($error)) {echo '<p class="alert alert-danger col-md-6">'. $error .'</p>';} ?>
+</div>
 
 <div class="row">
     <div class="col-md-6">
@@ -42,7 +66,7 @@ if (isset($_POST['add-student'])) {
 
             <div class="form-group">
               <label for="city" style="font-weight:700">City</label>
-              <input type="text" name="city" placeholder="" id="city" class="form-control">
+              <input type="text" name="city" placeholder="Where do you live?" id="city" class="form-control">
             </div>
 
             <div class="form-group">
@@ -67,7 +91,7 @@ if (isset($_POST['add-student'])) {
             </div>
 
             <div class="form-group">
-              <label for="photo">Photo</label>
+              <label for="photo">Image</label>
               <input type="file" name="photo" id="photo">
             </div>
 
