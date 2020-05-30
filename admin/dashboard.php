@@ -1,28 +1,65 @@
 <div class="content">
+     <!--header and breadcum-->
          <h1 class="text-primary"><i class="fas fa-tachometer-alt"></i> Dashboard</h1><h1><small>Statistic overview</small></h1>
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-tachometer-alt"></i>Dashboard</li>
             </ol>
           </nav>
+      <!--header and breadcum End-->
+
+      <!--Panel code-->
+       
+      <?php
+        $query = mysqli_query($link,"SELECT * FROM student_info;");
+        $totalStudent = mysqli_num_rows($query);
+
+        $query = mysqli_query($link,"SELECT * FROM users;");
+        $totalusers = mysqli_num_rows($query);
+        
+      ?>
+
+      <!--Panel code End-->
+      <!--Panel markap-->
+
           <div class="row">
+          <!--Single Panel-->
             <div class="col-md-3 single-panel">
               <div class="panel-wrapper">
                     <div class="row blue-color">
                       <div class="col-md-6"><i class="fa fa-users"></i> </div>
                       <div class="col-md-6">
-                        <div class="number">1</div>
+                        <div class="number"><?= $totalStudent ?></div>
                         <p>Stutent</p>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12 panel-dis">
-                        <p>Viwe All Student <a href="#"><i class="fas fa-arrow-alt-circle-right"></i></a> </p>
+                        <p>Viwe All Student <a href="index.php?page=all-student"><i class="fas fa-arrow-alt-circle-right"></i></a> </p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          <!--Single Panel-->
+              <div class="col-md-3 single-panel">
+              <div class="panel-wrapper">
+                    <div class="row blue-color">
+                      <div class="col-md-6"><i class="fa fa-users"></i> </div>
+                      <div class="col-md-6">
+                        <div class="number"><?= $totalusers  ?></div>
+                        <p>Stutent</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 panel-dis">
+                        <p>Viwe Users <a href="index.php?page=all-users"><i class="fas fa-arrow-alt-circle-right"></i></a> </p>
                       </div>
                     </div>
                   </div>
               </div>
           </div>
+        <!--Panel markap End here-->
+          
           <!-- Table-->
 
           <hr>

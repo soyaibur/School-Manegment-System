@@ -30,18 +30,18 @@
                         <tr>
                            <td><label for="choose">Choose class</label></td>
                            <td>
-                              <select class="from-control" name="choose" id="choose">
-                              <option value="0">Select</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
+                              <select class="from-control" name="class" id="class">
+                                 <option value="0">Select</option>
+                                 <option value="1st">1</option>
+                                 <option value="2nd">2</option>
+                                 <option value="3rd">3</option>
+                                 <option value="4th">4</option>
+                                 <option value="5th">5</option>
+                                 <option value="6th">6</option>
+                                 <option value="7th">7</option>
+                                 <option value="8th">8</option>
+                                 <option value="9th">9</option>
+                                 <option value="10th">10</option>
                               </select>
                            </td>
 
@@ -49,7 +49,7 @@
 
                         <tr>
                            <td><label for="roll">Roll</label></td>
-                           <td><input type="text" pattern="[1-9][6]" placeholder="Roll" name="roll"></td>
+                           <td><input type="text" required="" placeholder="Roll" name="roll"></td>
                         </tr>
                         <tr>
                            <td colspan="2" class="text-center"><input class="btn btn-primary" type="submit" value="Show Info" name="show_info"></td>
@@ -58,6 +58,74 @@
             </form>
          </div>
       </div>
+      <br>
+      <br>
+      <br>
+      <?php
+      require_once 'admin/dbcon.php';
+   
+        if (isset($_POST['show_info'])) {
+           $class = $_POST['class'];
+           $roll = $_POST['roll'];
+
+          $query =  mysqli_query($link,"SELECT * FROM student_info WHERE class = '$class' and roll = '$roll';");
+
+          $rows = mysqli_num_rows($query);
+          $result=mysqli_fetch_assoc($query);
+
+          if ($rows == 1) {
+             ?>
+               <div class="col-md-6 offset-md-3">
+           <table class="table table-bordered">
+          <tr>
+             <td rowspan="5"><img src="admin/student-images/<?= $result['photo'] ?>" class="img-thumnail" style="width:200px;" alt="this is your image"></td>
+             <td>Name</td>
+             <td><?= $result['name'] ?></td>
+          </tr>
+          <tr>
+             
+             <td>Roll</td>
+             <td><?= $result['roll'] ?></td>
+          </tr>
+          <tr>
+             
+             <td>Class</td>
+             <td><?= $result['class'] ?></td>
+          </tr>
+          <tr>
+             
+             <td>City</td>
+             <td><?= $result['city'] ?></td>
+          </tr>
+          <tr>
+             
+             <td>perent contact</td>
+             <td><?= $result['pcontact'] ?></td>
+          </tr>
+      
+         </table>
+      </div>
+
+         <?php
+          } else {
+             ?>
+               <script type="text/javascript">
+                 alert('DATA NOT FOUND');
+               </script>
+
+             <?php
+          }
+         
+           
+           
+           ?>
+          
+
+      <?php
+        }
+
+      ?>
+      
 
 
   </div>

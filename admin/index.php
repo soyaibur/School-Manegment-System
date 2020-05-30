@@ -25,7 +25,7 @@ if (!isset($_SESSION['user_login'])) {
     <link rel="stylesheet" href="../assets/responsive.css">
     
 
-    <title>Title</title>
+    <title>School Manegment System</title>
 </head>
 <body>
   
@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_login'])) {
         <a class="nav-link" href=""><i class="fa fa-user-plus"></i>Add User<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href=""><i class="fa fa-user"></i>Profile<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php?page=profile"><i class="fa fa-user"></i>Profile<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i>Log Out<span class="sr-only">(current)</span></a>

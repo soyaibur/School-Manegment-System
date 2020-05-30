@@ -42,10 +42,14 @@ svg.svg-inline--fa {
 }
 
 /*Panel Styling*/
+
+.col-md-3.single-panel {
+    margin-right: 30px;
+}
 .row.blue-color {
     background-color: #007BFF;
     color: #fff;
-}.row.blue-color {}
+}
 
 .blue-color .svg-inline--fa {
     font-size: 99px;
@@ -78,7 +82,6 @@ svg.svg-inline--fa {
     right: 5px;
 }
 
-.col-md-12.panel-dis {}
 
 /*Footer Area Styling*/
 .footer p {
