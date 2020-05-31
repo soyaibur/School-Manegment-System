@@ -8,7 +8,7 @@ if(isset($_POST['login'])){
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $username_check = mysqli_query($link,"SELECT * FROM  userS WHERE username = '$username';");
+  $username_check = mysqli_query($link,"SELECT * FROM  users WHERE username = '$username' OR email = '$username';");
   
 
 

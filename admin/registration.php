@@ -66,7 +66,7 @@
 
                 if(count($data_validation) == 0){
                   $password = md5($password);
-                  $insertdata = "INSERT INTO users (name, email, username, password, photo, status) VALUES ('$name','$email','$username','$password','$actualPhotoName','inactive');";
+                  $insertdata = "INSERT INTO users (name, email, username, password, photo, status) VALUES ('$name','$email','$username','$password','$actualPhotoName','active');";
 
                   $query = mysqli_query($link,$insertdata);
 
